@@ -1,0 +1,30 @@
+<% album = object %>
+<% action_url = album.nil? ? albums_url : album_url(album) %>
+<% action_name = album.nil? ? 'Create' : "Edit" %>
+<form action="<%= action_url %>" method="post">
+	<% if !album.nil? %>
+  	<input type="hidden" name="_method" value="put">
+	<% end %>
+
+		<label for="album_band_id">Band name</label>
+		<select name="album[band_id]" id="album_band_id" >
+		<% existing_value = album.nil? ? nil : album.band_id   %>
+		<% bands.each do |band| %>
+			<option value="<%= band.id %>" <%=selected(existing_value, band.id)%>><%=band.name%></option>
+		<% end %>
+	  </select>
+		<br>
+		<br>
+
+		<label for="album_name">Album name</label>
+		<input type="text" name="album[name]" id="album_name" <%=value(@album, :name)%> >
+		<br>
+		<br>
+		<label for="album_date">Album date</label>
+		<input type="date" name="album[date]" id="album_date" <%=value(@album, :date)%> >
+		<br>
+		<br>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	  <input type="submit" value="<%=action_name%> Album">
+
+</form>
