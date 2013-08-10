@@ -1,8 +1,8 @@
 <h1><%= @album.name%></h1>
-<span><%= @album.band.name%>, <%= @album.date%></span>
+<span><%= link_to @album.band.name, band_url(@album.band)%>, <%= @album.date%></span>
 <h5>Tracks</h5>
 <ul>
 	<% @tracks.each do |track| %>
-	<li><%=track.ord%>. <%=track.name%></li>
+	<li><%=track.ord%>. <%= link_to track.name, track_url(track.id)%></li>
 	<% end %>
 </ul>

@@ -1,6 +1,6 @@
 <h1>Bands</h1>
 <ul>
 	<% @bands.each do |band| %>
-	<li><h2><%= band.name %></h2></li>
+	<li><h2><%= link_to band.name, band_url(band) %></h2></li>
 	<% end %>
 </ul>

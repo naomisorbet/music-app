@@ -1,4 +1,6 @@
 class BandsController < ApplicationController
+  before_filter :require_login
+
   def index
     @bands = Band.all
     render :index

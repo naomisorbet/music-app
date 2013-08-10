@@ -2,7 +2,7 @@
 <h5>Albums</h5>
 <ul>
 	<% @albums.each do |album| %>
-	<li><h1><%= album.name %></h1>
-<span><%= album.band.name%>, <%= album.date%></span></li>
+	<li><h1><%= link_to album.name, album_url(album)%></h1>
+<span><%= link_to album.band.name, band_url(album.band)%>, <%= album.date%></span></li>
 	<% end %>
 </ul>

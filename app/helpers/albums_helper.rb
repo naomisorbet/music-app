@@ -2,12 +2,11 @@ module AlbumsHelper
 
   def value(album, key)
     return if album.nil?
-    value = album.send(key)
-    "value='#{value}'"
+    album.send(key)
   end
 
-  def selected(exisiting_value, option_value)
-    return if exisiting_value.nil? || option_value.nil?
+  def selected(existing_value, option_value)
+    return if existing_value.nil? || option_value.nil?
     if existing_value == option_value
       "selected='selected'"
     end

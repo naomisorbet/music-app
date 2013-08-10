@@ -1,0 +1,13 @@
+<form method="POST" action="<%=session_url%>" >
+	<h1>SIGN IN HUMAN IF YOU WISH TO ACCESS THE SECRET INFO</h1>
+	<label for="user_email" >email address</label>
+		<input type="text" id="user_email" name="user[email]" >
+		<br>
+		<br>
+		<label for="user_password" >SECRET PASSCODE(make sure nobody is looking before you type it in)</label>
+			<input type="password" id="user_password" name="user[password]" >
+		<br>
+		<br>
+		<input type="hidden" name="authenticity_token" value"<% form_authenticity_token %>">
+		<input type="submit" value="SUBMIT TO OUR HUMAN VALIDATOR">
+</form>

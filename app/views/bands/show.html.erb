@@ -2,8 +2,8 @@
 <h2>Albums</h2>
 <ul>
 	<% @albums.each do |album| %>
-	<li><h3><%= album.name %></h3>
-		<span><%= album.name %></span>
+	<li><h3><%= link_to album.name, album_url(album) %></h3>
+		<span><%= album.date %></span>
 	</li>
 	<% end %>
 </ul>

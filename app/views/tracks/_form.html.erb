@@ -1,0 +1,39 @@
+<% track = object %>
+<% action_url = track.nil? ? album_tracks_url : track_url(track) %>
+<% button_words = track.nil? ? 'Create track' : "Edit track" %>
+
+<% if !track.nil? %>
+	<!-- <form method="POST" action="<%=action_url%>">
+		<input type="hidden" name="_method" value="DELETE">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="submit" value="permanently delete <%=track.name%>">
+  </form> -->
+
+		<%= button_to( "permanently delete #{track.name}", action_url,
+		              :method => "delete", :data => { confirm: "Are you sure you want to permanently delete #{track.name}?" }  )  %>
+<% end %>
+
+
+
+<form action="<%= action_url %>" method="post">
+	<% if !track.nil? %>
+  	<input type="hidden" name="_method" value="put">
+	<% end %>
+
+		<label for="track_name">Track name</label>
+		<input type="text" name="track[name]" id="track_name" value="<%=value(track, :name)%>" >
+		<br>
+		<br>
+		<label for="track_ord">Track number</label>
+		<input type="text" name="track[ord]" id="track_ord" size="3" value="<%=value(track, :ord)%>" >
+		<br>
+		<br>
+		<label for"track_lyrics">Lyrics</label>
+		<textarea name="track[lyrics]" id="track_lyrics"><%=value(track, :lyrics)%></textarea>
+		<br>
+		<br>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	  <input type="submit" value="<%=button_words%>">
+
+
+</form>
